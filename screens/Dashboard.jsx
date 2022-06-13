@@ -46,7 +46,7 @@ export default function Dashboard ({navigation}) {
     useEffect(() => {
     const fetchData = async () => {
         const result = await axios.get(
-            'https://web.bkppd-balangankab.info/api-skm/ikm',
+            'https://bkpsdm-skm.balangankab.go.id/api/ikm',
         );
     
         setArr(result.data);
