@@ -87,7 +87,7 @@ return (
                 size="large"
                 source={{
                 uri:
-                    'http://web.bkppd-balangankab.info/assets/images/logo.png',
+                    'https://bkpsdm.balangankab.go.id/assets/images/logo.png',
                 }}
             />
             </View>

@@ -20,7 +20,7 @@ export default function SurveiCard() {
                 ASN BALANGAN
                 </Text>
                 <Text>
-                    Saya Adalah Aparatur Sipil Negara Yang Berkerja Di Daerah Kabupaten Balangan
+                    Saya Adalah Aparatur Sipil Negara (PNS/Non PNS) Yang Berkerja Di Daerah Kabupaten Balangan
                 </Text>
                 <Button
                 icon={<Icon name='check-circle' style={{marginRight: 15}} type="font-awesome" color='#ffffff' />}

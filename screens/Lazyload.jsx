@@ -18,7 +18,7 @@ export default class LazyLoad extends Component {
         <View style={styles.container}>
           <Image
             style={styles.logo}
-            source={{uri: 'http://web.bkppd-balangankab.info/assets/images/logo.png'}}
+            source={{uri: 'https://bkpsdm.balangankab.go.id/assets/images/logo.png'}}
           />
           <ActivityIndicator/>
         </View>
