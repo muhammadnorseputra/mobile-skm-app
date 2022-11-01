@@ -81,7 +81,7 @@ return (
     onRefresh={onRefresh}
     />
      <View style={{backgroundColor: '#DEEDF0', height:180}}>
-        <View style={{flex:2, marginHorizontal: 15, paddingVertical: 25, flexDirection: 'row', justifyContent: 'start', alignItems: 'start'}}>
+        <View style={{flex:2, marginHorizontal: 15, paddingVertical: 25, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
             <View>
             <Avatar
                 size="large"
@@ -159,7 +159,7 @@ return (
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'start',
+        alignItems: 'flex-start',
         marginVertical: 15,
         marginHorizontal: 15
     },
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 15,
-        marginTop: 10,
+        marginTop: 10
 
     }
 });

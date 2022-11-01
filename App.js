@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet } from 'react-native';
+import {View, Text, Image, StyleSheet, SafeAreaView } from 'react-native';
 
 // UI
 // import { ThemeProvider } from 'react-native-elements';
@@ -16,6 +16,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  innerContainer: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
   buttonCircle: {
     width: 40,
     height: 40,
@@ -27,10 +35,10 @@ const styles = StyleSheet.create({
   slide: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   image: {
-    width: responsiveWidth(80),
+    width: responsiveWidth(90),
     height: responsiveHeight(60),
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15,
@@ -92,12 +100,12 @@ export default class App extends React.Component {
   }
   _renderItem = ({ item }) => {
     return (
-      <View>
+      <View style={styles.innerContainer}>
         <View style={[styles.slide, {backgroundColor: item.backgroundColor}]}>
           <Image source={item.image} style={styles.image} resizeMode='contain'/>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.text}>{item.text}</Text>
         </View>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.text}>{item.text}</Text>
       </View>
     );
   }
@@ -120,12 +128,19 @@ export default class App extends React.Component {
           </Stack.Navigator>
         </NavigationContainer>
       );
-    } else {
-      return (<AppIntroSlider renderItem={this._renderItem} data={slides} dotStyle={{ backgroundColor: '#DDD' }}
-      activeDotStyle={{ backgroundColor: 'green' }} renderNextButton={() => { return (<Text style={{ fontSize: responsiveFontSize(2.3), marginTop: 12, fontWeight: 'bold', color: 'green' }}>Next</Text>) }}
+    } 
+    return (
+      <SafeAreaView style={styles.container}>
+        <AppIntroSlider 
+          renderItem={this._renderItem} 
+          data={slides} 
+          dotStyle={{ backgroundColor: '#DDD' }}
+          activeDotStyle={{ backgroundColor: 'green' }} renderNextButton={() => { return (<Text style={{ fontSize: responsiveFontSize(2.3), marginTop: 12, fontWeight: 'bold', color: 'green' }}>Next</Text>) }}
           renderPrevButton={() => { return (<Text style={{ fontSize: responsiveFontSize(2.3), marginTop: 12, fontWeight: 'bold', color: 'green' }}>Back</Text>) }}
-          renderDoneButton={() => { return (<Text style={{ fontSize: responsiveFontSize(2.3), marginTop: 12, fontWeight: 'bold', color: 'black' }}>Done</Text>) }} onDone={this._onDone}/>);
-    }
+          renderDoneButton={() => { return (<Text style={{ fontSize: responsiveFontSize(2.3), marginTop: 12, fontWeight: 'bold', color: 'black' }}>Done</Text>) }} onDone={this._onDone}/>
+      </SafeAreaView>
+    );
+  
     // return (<SurveiCard/>)
   }
 }
