@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, SafeAreaView } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // UI
 // import { ThemeProvider } from 'react-native-elements';
@@ -48,7 +49,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     textAlign: 'center',
     paddingHorizontal: 16,
-    fontSize: responsiveFontSize(2.3),
+    fontSize: responsiveFontSize(1.6),
+    lineHeight: 19
   },
   title: {
     fontSize: responsiveFontSize(3),
@@ -64,8 +66,8 @@ const styles = StyleSheet.create({
 const slides = [
   {
     key: 'one',
-    title: 'Selamat Datang',
-    text: 'SKM (Survei Kepuasan Masyarakat)\nBKPPD Kabupaten Balangan',
+    title: 'Halo, Selamat Datang',
+    text: 'SKM (Survei Kepuasan Masyarakat)\n Badan Kepegawaian dan Pengembangan Sumber Daya Manusia Kabupaten Balangan',
     image: require('./assets/images/hero-1.png'),
     // backgroundColor: '#59b2ab',
     backgroundColor: '#fff',
@@ -113,18 +115,20 @@ export default class App extends React.Component {
     // User finished the introduction. Show real app through
     // navigation or simply by controlling state
     this.setState({ showRealApp: true });
+    AsyncStorage.setItem('@realApp', JSON.stringify(true))
   }
 
 
   render () {
-    if (this.state.showRealApp) {
+    const isRealApp = AsyncStorage.getItem('@realApp')
+    if (isRealApp && isRealApp !== null) {
       return (
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Lazy">
             <Stack.Screen name="Lazy" component={LazyLoad} options={{headerShown: false}} />
             <Stack.Screen name="Dashboard" component={Dashboard} options={{headerShown: false}}/>
             <Stack.Screen name="SurveiCard" component={SurveiCard}  options={{title: 'Pilih Formulir Survei'}}/>
-            <Stack.Screen name="Survei" component={Survei}  options={{title: 'Formulir Survei'}}/>
+            <Stack.Screen name="Survei" component={Survei}  options={{title: 'Formulir Survei', headerLeft: false}}/>
           </Stack.Navigator>
         </NavigationContainer>
       );
@@ -135,12 +139,12 @@ export default class App extends React.Component {
           renderItem={this._renderItem} 
           data={slides} 
           dotStyle={{ backgroundColor: '#DDD' }}
-          activeDotStyle={{ backgroundColor: 'green' }} renderNextButton={() => { return (<Text style={{ fontSize: responsiveFontSize(2.3), marginTop: 12, fontWeight: 'bold', color: 'green' }}>Next</Text>) }}
-          renderPrevButton={() => { return (<Text style={{ fontSize: responsiveFontSize(2.3), marginTop: 12, fontWeight: 'bold', color: 'green' }}>Back</Text>) }}
-          renderDoneButton={() => { return (<Text style={{ fontSize: responsiveFontSize(2.3), marginTop: 12, fontWeight: 'bold', color: 'black' }}>Done</Text>) }} onDone={this._onDone}/>
+          activeDotStyle={{ backgroundColor: 'green' }} 
+          renderNextButton={() => { return (<Text style={{ fontSize: responsiveFontSize(2.3), marginTop: 3, fontWeight: 'bold', color: 'green', backgroundColor: '#eee', padding: 8, borderRadius: 10 }}>Next</Text>) }}
+          renderPrevButton={() => { return (<Text style={{ fontSize: responsiveFontSize(2.3), marginTop: 3, fontWeight: 'bold', color: 'green', backgroundColor: '#eee', padding: 8, borderRadius: 10 }}>Back</Text>) }}
+          renderDoneButton={() => { return (<Text style={{ fontSize: responsiveFontSize(2.3), marginTop: 3, fontWeight: 'bold', color: 'black', backgroundColor: '#eee', padding: 8, borderRadius: 10 }}>Done</Text>) }} onDone={this._onDone}/>
       </SafeAreaView>
     );
-  
     // return (<SurveiCard/>)
   }
 }

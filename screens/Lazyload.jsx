@@ -6,7 +6,8 @@ export default class LazyLoad extends Component {
     componentDidMount() {
       setTimeout(() => {
         this.props.navigation.replace('Dashboard');
-      }, 2000)
+      }, 1000)
+      
     }
 
     componentWillUnmount() {
@@ -34,8 +35,8 @@ export default class LazyLoad extends Component {
       justifyContent: 'center',
     },
     logo: {
-      width: 130,
-      height: 130,
+      width: 100,
+      height: 100,
       marginBottom: 10
     },
     intro_txt: {

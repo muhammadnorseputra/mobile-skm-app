@@ -4,7 +4,7 @@
     "slug": "skmApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/android/drawable-hdpi/Lambang_Kabupaten_Balangan.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/android/drawable-hdpi/Lambang_Kabupaten_Balangan.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.skm.bkppd"
